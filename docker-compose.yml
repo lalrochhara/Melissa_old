@@ -23,7 +23,7 @@ services:
 #     depends_on:
 #       - mongo
 #     environment:
-#       DB_URI: "mongodb://Melissa:mypasswd@mongo"
+       DB_URI: "mongodb+srv://sangteiubot:sangteiubot@cluster0.hnd2z.mongodb.net/?retryWrites=true&w=majority"
 
 #   mongo:
 #     image: "mongo:latest"
