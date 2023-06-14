@@ -1646,6 +1646,6 @@ all = ["uvloop"]
 uvloop = ["uvloop"]
 
 [metadata]
-lock-version = "2.0"
-python-versions = "~=3.9"
+lock-version = "6.6.0"
+python-versions = "~=3.11"
 content-hash = "bd594123678620b6198e488896be168cde8a2c103c52ae511a1951e96f0d6527"
