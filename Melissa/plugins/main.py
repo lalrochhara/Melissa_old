@@ -1,5 +1,5 @@
 """ Main Melissa plugins """
-# Copyright (C) 2020 - 2023  Famhawite Team, <https://github.com/lalrochhara.git>
+# Copyright (C) 2020 - 2023  Famhawite Infosys Team, <https://github.com/lalrochhara.git>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -95,49 +95,49 @@ class Main(plugin.Plugin):
             await self.send_to_log("Starting system...")
 
     async def on_stop(self) -> None:
-        file = AsyncPath("Melissa/Melissa.session")
-        if not await file.exists():
-            return
+        async with asyncio.Lock():
+            file = AsyncPath("Melissa/Melissa.session")
+            if not await file.exists():
+                return
 
-        data = await self.bot.client.invoke(GetState())
-        await self.db.update_one(
-            {"_id": sha256(self.bot.config["api_id"].encode()).hexdigest()},
-            {
-                "$set": {
-                    "session": Binary(await file.read_bytes()),
-                    "date": data.date,
-                    "pts": data.pts,
-                    "qts": data.qts,
-                    "seq": data.seq,
-                }
-            },
-            upsert=True,
-        )
+            data = await self.bot.client.invoke(GetState())
+            await self.db.update_one(
+                {"_id": sha256(self.bot.config.API_ID.encode()).hexdigest()},
+                {
+                    "$set": {
+                        "session": Binary(await file.read_bytes()),
+                        "date": data.date,
+                        "pts": data.pts,
+                        "qts": data.qts,
+                        "seq": data.seq,
+                    }
+                },
+                upsert=True,
+            )
 
-        status_msg = await self.send_to_log("Shutdowning system...")
-        self.bot.log.info("Preparing to shutdown...")
-        if not status_msg:
-            return
+            status_msg = await self.send_to_log("Shutdowning system...")
+            self.bot.log.info("Preparing to shutdown...")
+            if not status_msg:
+                return
 
-        await self.db.update_one(
-            {"_id": 5},
-            {
-                "$set": {
-                    "status_chat_id": status_msg.chat.id,
-                    "status_message_id": status_msg.id,
-                    "time": util.time.usec(),
-                }
-            },
-            upsert=True,
-        )
+            await self.db.update_one(
+                {"_id": 5},
+                {
+                    "$set": {
+                        "status_chat_id": status_msg.chat.id,
+                        "status_message_id": status_msg.id,
+                        "time": util.time.usec(),
+                    }
+                },
+                upsert=True,
+            )
 
     async def send_to_log(self, text: str, *args: Any, **kwargs: Any) -> Optional[Message]:
-        try:
-            return await self.bot.client.send_message(
-                int(self.bot.config.log_channel), text, *args, **kwargs
-            )
-        except AttributeError:
-            pass
+        if not self.bot.config.LOG_CHANNEL:
+            return
+        return await self.bot.client.send_message(
+            int(self.bot.config.LOG_CHANNEL), text, *args, **kwargs
+        )
 
     async def help_builder(self, chat_id: int) -> List[List[InlineKeyboardButton]]:
         """Build the help button"""
@@ -283,11 +283,11 @@ class Main(plugin.Plugin):
                     [
                         InlineKeyboardButton(
                             text=await self.text(chat.id, "status-page-button"),
-                            url="https://status.lalrochhara.github.io",
+                            url="https://status.userbotindo.com",
                         ),
                         InlineKeyboardButton(
                             text=await self.text(chat.id, "dashboard-button"),
-                            url="https://lalrochhara.github.io/dashboard",
+                            url="https://userbotindo.com/dashboard",
                         ),
                     ]
                 )
