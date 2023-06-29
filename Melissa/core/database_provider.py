@@ -1,5 +1,5 @@
 """Melissa database core"""
-# Copyright (C) 2020 - 2023  Famhawite Team, <https://github.com/lalrochhara.git>
+# Copyright (C) 2020 - 2023  Famhawite Infosy Team, <https://github.com/lalrochhara.git>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -33,10 +33,10 @@ class DatabaseProvider(MixinBase):
             import certifi
 
             client = util.db.AsyncClient(
-                self.config["db_uri"], connect=False, tlsCAFile=certifi.where()
+                self.config.DB_URI, connect=False, tlsCAFile=certifi.where()
             )
         else:
-            client = util.db.AsyncClient(self.config["db_uri"], connect=False)
+            client = util.db.AsyncClient(self.config.DB_URI, connect=False)
 
         self.db = client.get_database("MelissaBot")
 
