@@ -19,12 +19,12 @@ help-pm: |
   Melissa settings are also configurable on our dashboard, [click here](https://lalrochhara.github.io/dashboard?ref=Melissa) to open dashboard.
 start-chat: Sending you a warm hi & wishing your day is a happy one!
 help-chat: Contact me in PM to get the list of possible commands.
-add-to-group-button: Add to Group 👥
-start-help-button: Help & Commands ❔
+add-to-group-button: Add to Group 
+start-help-button: Help & Commands
 help-chat-button: Help
 status-page-button: Status
 dashboard-button: Dashboard
-back-button: ⬅️ Back
+back-button:  Back
 donate: |
   Hi, glad to see you want to donate!
   You can donate to us on [our site](https://lalrochhara.com/donate?ref=Melissa).
@@ -84,17 +84,17 @@ admins-help: |
 gpic-no-photo: Give me a photo!
 gpic-success-changed: Group picture changed successfully!.
 finding-zombie: "`Finding zombies account...`"
-cleaning-zombie: "**{}** `zombies found and has been removed..!` 🚮"
+cleaning-zombie: "**{}** `zombies found and has been removed..!`"
 zombie-clean: "`Zombies not found, group are clean..` "
 promote-error-invalid: "**User id invalid**\n`make sure he is a member here, and you enter the correct id/username!`"
 promote-error-privacy-restricted: "**The user has privacy settings that prevent to perform this action**\n`make sure he is a member here, and you enter the correct id/username!`"
 promote-error-self: "__You can't promote yourself__"
 demote-success: "`Demoted successfully..`"
 demote-error-perm: "`I don't have permission to demote, I can only demote the ones I promote..`"
-no-demote-user: "`Bruh tell me who you want to demote..` 😒"
+no-demote-user: "`Bruh tell me who you want to demote..`"
 demote-error-self: "__You sure you want to demote yourself?__"
 demote-error-creator: "__You can't demote creator of the group__"
-promote-success: "`Successfully Promoted..` ❤️"
+promote-success: "`Successfully Promoted..`"
 promote-error-perm: "`This user is already an admin!`"
 no-promote-user: "`Who should I promote?\nGive me some user!`"
 no-pinned-message: "__No pinned message__"
@@ -294,6 +294,7 @@ language-help: |
   **Available languages:**
   - 🇺🇸 English.
   - 🇮🇩 Indonesia.\n
+  - Lus Mizo.\n
   Commands:
   ×  /setlang | /lang | /language : set your preferred language.\n
   **Note**
