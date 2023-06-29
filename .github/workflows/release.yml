@@ -76,7 +76,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.lalrochhara_ACCESS_TOKEN }}
+          password: ${{ secrets.USERBOTINDO_ACCESS_TOKEN }}
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
@@ -98,4 +98,4 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            lalrochhara_ACCESS_TOKEN=${{ secrets.lalrochhara_ACCESS_TOKEN }}
+            USERBOTINDO_ACCESS_TOKEN=${{ secrets.USERBOTINDO_ACCESS_TOKEN }}
