@@ -1,5 +1,5 @@
 """Bot Federation Tools"""
-# Copyright (C) 2020 - 2023  Famhawite Team, <https://github.com/lalrochhara.git>
+# Copyright (C) 2020 - 2023  Famhawite Infosys Team, <https://github.com/lalrochhara.git>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -897,7 +897,7 @@ class Federation(plugin.Plugin):
         if len(ctx.args) > 1:  # <user_id> <fed_id>
             try:
                 user_id = int(ctx.args[0])
-            except TypeError:
+            except (TypeError, ValueError):
                 return await self.text(chat.id, "fed-invalid-user-id")
 
             data = await self.get_fed(ctx.args[1])
@@ -940,7 +940,7 @@ class Federation(plugin.Plugin):
                     user = user[0]
                 if not user:
                     return await self.text(chat.id, "fed-invalid-user-id")
-            except TypeError:
+            except (TypeError, ValueError):
                 return await self.text(chat.id, "fed-invalid-user-id")
 
         reply_msg = ctx.msg.reply_to_message
@@ -988,9 +988,7 @@ class Federation(plugin.Plugin):
         except KeyError:
             return await self.text(chat.id, "fed-backup-empty")
 
-        file = AsyncPath(
-            self.bot.config.get("download_path", "./downloads/") + data["name"] + ".csv"
-        )
+        file = AsyncPath(self.bot.config.DOWNLOAD_PATH + data["name"] + ".csv")
 
         await file.touch()
         async with file.open("w") as f:
@@ -1017,9 +1015,7 @@ class Federation(plugin.Plugin):
         if not data:
             return await self.text(chat.id, "user-no-feds")
 
-        file = AsyncPath(
-            await reply_msg.download(self.bot.config.get("download_path", "./downloads/"))
-        )
+        file = AsyncPath(await reply_msg.download(self.bot.config.DOWNLOAD_PATH))
 
         fid = data["_id"]
         tasks = []  # type: List[asyncio.Task[None]]
