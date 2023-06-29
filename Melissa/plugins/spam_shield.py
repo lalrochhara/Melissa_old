@@ -1,5 +1,5 @@
 """Chat SpamShield"""
-# Copyright (C) 2020 - 2023  Famhawite Team, <https://github.com/lalrochhara.git>
+# Copyright (C) 2020 - 2023  UserbotIndo Team, <https://github.com/userbotindo.git>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ from pyrogram.errors import (
 from pyrogram.types import Chat, Message, User
 
 try:
-    from lalrochhara import get_trust
+    from userbotindo import get_trust
 except ImportError:
     from Melissa.util.misc import do_nothing as get_trust
 
@@ -53,7 +53,7 @@ class SpamShield(plugin.Plugin):
     spam_protection: bool
 
     async def on_load(self) -> None:
-        self.token = self.bot.config.get("sw_api")
+        self.token = self.bot.config.SW_API
         if not self.token:
             self.bot.log.warning("SpamWatch API token not exist")
 
@@ -289,7 +289,7 @@ class SpamShield(plugin.Plugin):
             reason = "Flagged as a spammer."
 
         try:
-            await asyncio.gather(
+            task = [
                 self.bot.log_stat("banned"),
                 self.ban(chat, user, reason),
                 self.bot.client.send_message(
@@ -298,18 +298,22 @@ class SpamShield(plugin.Plugin):
                     disable_web_page_preview=True,
                     message_thread_id=message.message_thread_id,
                 ),
-                self.bot.client.send_message(
-                    int(self.bot.config.log_channel),
-                    text=(
-                        "#LOG #SPAM_SHIELD\n"
-                        f"**User**: {userlink}\n"
-                        f"**Banned On**: {chat_link}\n"
-                        f"**ID**: {user.id}\n"
-                        f"**Reason**: {reason}"
-                    ),
-                    disable_web_page_preview=True,
-                ),
-            )
+            ]
+            if self.bot.config.LOG_CHANNEL:
+                task.append(
+                    self.bot.client.send_message(
+                        self.bot.config.LOG_CHANNEL,
+                        text=(
+                            "#LOG #SPAM_SHIELD\n"
+                            f"**User**: {userlink}\n"
+                            f"**Banned On**: {chat_link}\n"
+                            f"**ID**: {user.id}\n"
+                            f"**Reason**: {reason}"
+                        ),
+                        disable_web_page_preview=True,
+                    )
+                )
+            await asyncio.gather(*task)
         except BadRequest as err:
             self.log.warning(
                 f"Exception raise on {user.id} ({reason} | {banner}) in {chat.id}:{err}",
