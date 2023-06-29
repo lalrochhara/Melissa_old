@@ -349,12 +349,11 @@ class EventDispatcher(MixinBase):
 {util.error.format_exception(exc)}
 ```
         """
-async with TelegramClient(session_name, api_id, api_hash) as client:
         await self.client.send_message(
             chat_id,
             alert,
             message_thread_id=thread_id,  # type: ignore
         )
-    #await client.run_until_disconnected()
+   
     async def log_stat(self: "Melissa", stat: str, *, value: int = 1) -> None:
         await self.dispatch_event("stat_listen", stat, value)
