@@ -34,7 +34,7 @@ from Melissa import command, filters, listener, plugin, util
 LANG_FLAG = {
     "en": f"{emoji.FLAG_UNITED_STATES} English",
     "id": f"{emoji.FLAG_INDONESIA} Indonesia",
-	"mz": f"{emoji.FLAG_INDIA} Mizoram",
+	"mz": f"{emoji.FLAG_INDIA} Mizo",
 }
 
 
