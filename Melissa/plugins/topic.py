@@ -1,5 +1,5 @@
 """Bot stats plugin"""
-# Copyright (C) 2020 - 2022  lalrochhara Team, <https://github.com/lalrochhara.git>
+# Copyright (C) 2020 - 2022  Famhawite Infosy Team, <https://github.com/lalrochhara.git>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
