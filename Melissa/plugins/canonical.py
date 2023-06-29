@@ -1,5 +1,5 @@
-""" Canonical plugin for @dMelissa_bot """
-# Copyright (C) 2020 - 2023  Famhawite Team, <https://github.com/lalrochhara.git>
+""" Canonical plugin for @Melissa_bot """
+# Copyright (C) 2020 - 2023  Famhawite Infosys Team, <https://github.com/lalrochhara.git>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ from pyrogram.types import (
 )
 
 try:
-    from lalrochhara import WebServer
+    from userbotindo import WebServer
 
     _run_canonical = True
 except ImportError:
@@ -49,7 +49,7 @@ from Melissa import command, filters, listener, plugin, util
 class Canonical(plugin.Plugin):
     """Helper Plugin
     This plugin is only available for @dMelissa_bot
-    to comunicate with https://lalrochhara.com
+    to comunicate with https://userbotindo.com
     """
 
     name: ClassVar[str] = "Canonical"
@@ -216,8 +216,8 @@ class Canonical(plugin.Plugin):
 
     @command.filters(filters.private)
     async def cmd_login(self, ctx: command.Context):
-        """Login to https://lalrochhara.com"""
-        if not self.bot.config["login_url"]:
+        """Login to https://userbotindo.com"""
+        if not self.bot.config.LOGIN_URL:
             return
 
         await ctx.respond(
@@ -228,8 +228,8 @@ class Canonical(plugin.Plugin):
                         InlineKeyboardButton(
                             "Login",
                             login_url=LoginUrl(
-                                url=self.bot.config["login_url"],
-                                forward_text="Login to https://lalrochhara.com",
+                                url=self.bot.config.LOGIN_URL,
+                                forward_text="Login to https://userbotindo.com",
                                 request_write_access="True",
                             ),
                         )
