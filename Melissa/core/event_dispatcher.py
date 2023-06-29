@@ -1,5 +1,5 @@
 """Melissa event dispatcher"""
-# Copyright (C) 2020 - 2023  Famhawite Team, <https://github.com/lalrochhara.git>
+# Copyright (C) 2020 - 2023  Famhawite Infosys Team, <https://github.com/lalrochhara.git>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -238,7 +238,7 @@ class EventDispatcher(MixinBase):
         if not self.loaded or self._TelegramBot__running:
             return
 
-        api_id = sha256(self.config["api_id"].encode()).hexdigest()
+        api_id = sha256(self.config.API_ID.encode()).hexdigest()
         collection = self.db.get_collection("SESSION")
 
         data = await collection.find_one({"_id": api_id})
@@ -330,10 +330,10 @@ class EventDispatcher(MixinBase):
 
     async def dispatch_alert(self: "Melissa", invoker: str, exc: BaseException) -> None:
         """Dispatches an alert to the configured alert log."""
-        if not self.config["alert_log"]:
+        if not self.config.ALERT_LOG:
             return
 
-        log_chat = self.config["alert_log"].split("#")
+        log_chat = self.config.ALERT_LOG.split("#")
         thread_id = None
         chat_id = int(log_chat[0])
         if len(log_chat) == 2:
