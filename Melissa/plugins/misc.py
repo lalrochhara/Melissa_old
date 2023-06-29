@@ -1,5 +1,5 @@
 """miscellaneous bot commands"""
-# Copyright (C) 2020 - 2023  Famhawite Team, <https://github.com/lalrochhara.git>
+# Copyright (C) 2020 - 2023  Famhawite Infosy Team, <https://github.com/lalrochhara.git>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -145,7 +145,7 @@ class Misc(plugin.Plugin):
         """Send the bot source code"""
         await ctx.respond(
             "[GitHub repo](https://github.com/lalrochhara/Melissa)\n"
-            + "[Support](https://t.me/lalrochhara)",
+            + "[Support](https://t.me/FamhawiteInfosys)",
             disable_web_page_preview=True,
         )
 
