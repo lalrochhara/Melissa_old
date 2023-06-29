@@ -350,10 +350,10 @@ class EventDispatcher(MixinBase):
 ```
         """
         await self.client.send_message(
-            chat_id,
-            alert,
-            message_thread_id=thread_id,  # type: ignore
-        )
+    chat_id,
+    alert
+)
+
    
     async def log_stat(self: "Melissa", stat: str, *, value: int = 1) -> None:
         await self.dispatch_event("stat_listen", stat, value)
