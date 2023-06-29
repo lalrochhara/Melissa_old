@@ -1,5 +1,5 @@
 """Melissa base"""
-# Copyright (C) 2020 - 2023  Famhawite Team, <https://github.com/lalrochhara.git>
+# Copyright (C) 2020 - 2023  Famhawite Infosys Team, <https://github.com/lalrochhara.git>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ from typing import Optional
 import aiohttp
 import pyrogram
 
-from Melissa.util.config import TelegramConfig
+from Melissa.util.config import Config
 
 from .command_dispatcher import CommandDispatcher
 from .database_provider import DatabaseProvider
@@ -35,11 +35,11 @@ class Melissa(TelegramBot, DatabaseProvider, PluginExtender, CommandDispatcher, 
     log: logging.Logger
     http: aiohttp.ClientSession
     client: pyrogram.client.Client
-    config: TelegramConfig[str, str]
+    config: Config
     loop: asyncio.AbstractEventLoop
     stopping: bool
 
-    def __init__(self, config: TelegramConfig[str, str]):
+    def __init__(self, config: Config):
         self.config = config
         self.log = logging.getLogger("bot")
         self.loop = asyncio.get_event_loop()
@@ -53,7 +53,7 @@ class Melissa(TelegramBot, DatabaseProvider, PluginExtender, CommandDispatcher, 
 
     @classmethod
     async def init_and_run(
-        cls, config: TelegramConfig[str, str], *, loop: Optional[asyncio.AbstractEventLoop] = None
+        cls, config: Config, *, loop: Optional[asyncio.AbstractEventLoop] = None
     ) -> "Melissa":
         Melissa = None
 
