@@ -19,12 +19,12 @@ help-pm: |
   Melissa settings are also configurable on our dashboard, [click here](https://lalrochhara.github.io/dashboard?ref=Melissa) to open dashboard.
 start-chat: Sending you a warm hi & wishing your day is a happy one!
 help-chat: Contact me in PM to get the list of possible commands.
-add-to-group-button: Add to Group 👥
-start-help-button: Help & Commands ❔
+add-to-group-button: Add to Group 
+start-help-button: Help & Commands
 help-chat-button: Help
 status-page-button: Status
 dashboard-button: Dashboard
-back-button: ⬅️ Back
+back-button: Back
 donate: |
   Hi, glad to see you want to donate!
   You can donate to us on [our site](https://lalrochhara.com/donate?ref=Melissa).
@@ -84,17 +84,17 @@ admins-help: |
 gpic-no-photo: Give me a photo!
 gpic-success-changed: Group picture changed successfully!.
 finding-zombie: "`Finding zombies account...`"
-cleaning-zombie: "**{}** `zombies found and has been removed..!` 🚮"
+cleaning-zombie: "**{}** `zombies found and has been removed..!`"
 zombie-clean: "`Zombies not found, group are clean..` "
 promote-error-invalid: "**User id invalid**\n`make sure he is a member here, and you enter the correct id/username!`"
 promote-error-privacy-restricted: "**The user has privacy settings that prevent to perform this action**\n`make sure he is a member here, and you enter the correct id/username!`"
 promote-error-self: "__You can't promote yourself__"
 demote-success: "`Demoted successfully..`"
 demote-error-perm: "`I don't have permission to demote, I can only demote the ones I promote..`"
-no-demote-user: "`Bruh tell me who you want to demote..` 😒"
+no-demote-user: "`Bruh tell me who you want to demote..`"
 demote-error-self: "__You sure you want to demote yourself?__"
 demote-error-creator: "__You can't demote creator of the group__"
-promote-success: "`Successfully Promoted..` ❤️"
+promote-success: "`Successfully Promoted..`"
 promote-error-perm: "`This user is already an admin!`"
 no-promote-user: "`Who should I promote?\nGive me some user!`"
 no-pinned-message: "__No pinned message__"
@@ -154,35 +154,35 @@ federations-help: |
   × /fban: Bans a user or channel from the current chat's federation.
   × /unfban: Unbans a user or channel from the current chat's federation.
   × /fadmins: Get a list of federation admins.
-federation-limit: You can only own 1 federation!
+federation-limit: Federation pakhat chiah i nei thei!
 new-federation: |
-  **New federation have been created**
+  **Federation thar siam ni**
   **Name:** {fed_name}
   **Fed ID:** {fed_id}\n
   Use this command on group to join the federations
   `/joinfed {fed_id}`
 need-fed-name: Please write the federation name too!
-user-no-feds: Looks like you don't own any federation yet!\nCreate one by using `/newfed <fed name>`
+user-no-feds: Eng federation mah ila nei lo ni in a lang!\nEntirna ami ang hian siam rawh `/newfed <fed Hming>`
 del-fed-confirm: |
-  Are you sure you want to delete this federation?
-  This action cannot be undone!
-  You will loose your entire ban list and your federation will be permanently lost!
-  \nConfirm deletion of **{}**
-fed-confirm-text: "⚠️ Confirm Deletion ⚠️"
-fed-abort-text: Abort
-fed-delete-canceled: Federation deletion canceled
-fed-delete-done: I have deleted your Federation!\nAll groups that connect to **{}** are now federation-less.
-fed-cant-two-feds: You cannot join two federations in one chat!
-fed-invalid-id: Please enter a valid federation ID
+  He federation hi paih i duh meuh maw?
+  Tawp san leh mai mai theih ani dawn lo ania!
+  I lo ban tawh te zawng zawng ban list atangin an bo vek anga,i federation hi a bo nghal hmak bawk ang!
+  \nPaih i duh tak tak em tichiang rawh **{}** hi
+fed-confirm-text: "Paih i duh tak tak em ti chiang rawh"
+fed-abort-text: Tawp san
+fed-delete-canceled: Federation paih tum chu thulh leh ani
+fed-delete-done: I Federation chu paih ani!\nI group hemi **{}** federation  zawm tu te zawng zawng hi Federation neilo in an awm tawh ang.
+fed-cant-two-feds: Group pakhat atang in federation pahnih i zawm theilo!
+fed-invalid-id: Federation ID dik tak dah rawh
 fed-invalid-user-id: |
-  Please enter a valid user ID
-  Usage:
+  ID dik tak chauh dah rawh
+  A hman dan:
     - `/fstats <user_id> <fed_id>``: Check fban status of a user in a federation.
     - `/fstats <user_id>`: check all fban stats for user in all federations.
     - `/fstats <reply>`: check all fban stats for replied user in all federations.
     - `/fstats`: check all fban stats for you in all federations.
-fed-already-connected: This group is already connected to that federation!
-fed-chat-joined-info: Chat joined to **{}** Federation!
+fed-already-connected: He group hian federation a zawm tawh!
+fed-chat-joined-info: Group hian he **{}** Federation hi a zawm e!
 fed-not-connected: This chat isn't connected to that federation!
 fed-chat-leave-info: This chat has left the **{}** Federation!
 fed-no-promote-user: Who should I promote?\nGive me some user!
