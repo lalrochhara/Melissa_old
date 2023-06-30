@@ -134,45 +134,41 @@ class Reporting(plugin.Plugin):
 
         return data.get("setting", True)
 
-    @command.filters(filters.group)
-    async def cmd_report(self, ctx: command.Context) -> None:
-        return await self.on_message(ctx.message)
-
     @command.filters(filters.admin_only)
-    async def cmd_reports(
-        self, ctx: command.Context, setting: Optional[bool] = None
-    ) -> Optional[str]:
-        """Report setting command"""
-        if ctx.msg.reply_to_message:
-            return None
+async def cmd_reports(
+    self, ctx: command.Context, setting: Optional[bool] = None
+) -> Optional[str]:
+    """Report setting command"""
+    if ctx.msg.reply_to_message:
+        return None
 
-        chat = ctx.chat
-        private = chat.type == ChatType.PRIVATE
+    chat = ctx.chat
+    private = chat.type == ChatType.PRIVATE
 
-        if setting is None:
-            if not ctx.input:
-                return await self.text(
-                    chat.id,
-                    "report-setting" if private else "chat-report-setting",
-                    await self.is_active(chat.id, private),
-                )
+    if setting is None:
+        if not ctx.input:
+            return await self.text(
+                chat.id,
+                "report-setting" if private else "chat-report-setting",
+                await self.is_active(chat.id, private),
+            )
 
-            return await self.text(chat.id, "err-yes-no-args")
+        return await self.text(chat.id, "err-yes-no-args")
 
-        _, member = await util.tg.fetch_permissions(self.bot.client, chat.id, ctx.author.id)
-        if not member or member.status not in {
-            ChatMemberStatus.ADMINISTRATOR,
-            ChatMemberStatus.OWNER,
-        }:
-            return None
+    member = ctx.msg.from_user
+    if not member or member.status not in {
+        ChatMemberStatus.ADMINISTRATOR,
+        ChatMemberStatus.OWNER,
+    }:
+        return None
 
-        if setting is True:
-            text = "report-on" if private else "chat-report-on"
-        else:
-            text = "report-off" if private else "chat-report-off"
+    if setting is True:
+        text = "report-on" if private else "chat-report-on"
+    else:
+        text = "report-off" if private else "chat-report-off"
 
-        ret, _ = await asyncio.gather(
-            self.text(chat.id, text),
-            self.setting(chat.id, private, setting),
-        )
-        return ret
+    ret, _ = await asyncio.gather(
+        self.text(chat.id, text),
+        self.setting(chat.id, private, setting),
+    )
+    return ret
