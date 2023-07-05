@@ -2,8 +2,8 @@
 
 services:
   Melissa:
-    image: Melissa
-    container_name: Melissa
+    image: melissa
+    container_name: melissa
     build:
       context: .
       dockerfile: Dockerfile
