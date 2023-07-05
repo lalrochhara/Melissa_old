@@ -1,5 +1,5 @@
 # Set base image (host OS)
-FROM python:3.11-slim-bullseye
+FROM python:3.10-slim-bullseye
 
 # Set the working directory in the container
 WORKDIR /Melissa/
@@ -20,7 +20,7 @@ RUN pip install --upgrade pip \
 
 RUN poetry install --no-root --only main -E uvloop
 
-ARG lalrochhara_ACCESS_TOKEN
+ARG USERBOTINDO_ACCESS_TOKEN
 COPY ./preinstall.sh ./
 RUN chmod +x ./preinstall.sh
 RUN ./preinstall.sh
