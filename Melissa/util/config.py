@@ -38,7 +38,7 @@ class Config:
         self.WORKERS = int(getenv("WORKERS", min(32, (cpu_count() or 0) + 4)))
         self.DOWNLOAD_PATH = getenv("DOWNLOAD_PATH", "./downloads")
 
-        self.DB_URI = mongodb+srv://nickylalrochhara917:Jenny19970515%%@@@jennyproject.sozqsii.mongodb.net/?retryWrites=true&w=majority
+        self.DB_URI = 'mongodb+srv://nickylalrochhara917:Jenny19970515%%@@@jennyproject.sozqsii.mongodb.net/?retryWrites=true&w=majority'
 
         self.LOG_CHANNEL = getenv("LOG_CHANNEL")
         self.ALERT_LOG = getenv("ALERT_LOG")
