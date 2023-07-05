@@ -34,7 +34,7 @@ class Config:
         self.API_ID = getenv("API_ID", "")
         self.API_HASH = getenv("API_HASH", "")
         self.BOT_TOKEN = getenv("BOT_TOKEN", "")
-        self.OWNER_ID = int(getenv("OWNER_ID", 0))
+        self.OWNER_ID = 6161727895
         self.WORKERS = int(getenv("WORKERS", min(32, (cpu_count() or 0) + 4)))
         self.DOWNLOAD_PATH = getenv("DOWNLOAD_PATH", "./downloads")
 
