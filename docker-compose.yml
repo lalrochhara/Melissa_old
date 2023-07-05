@@ -20,19 +20,19 @@ services:
 # # This lines bellow only uses a single MongoDB instance for simplicity
 # # Change it to your needs if you want to convert it to a ReplicaSet
 
-    depends_on:
-    - mongo
-    environment:
-    DB_URI: "mongodb://Melissa:mypasswd@mongo"
+#     depends_on:
+#       - mongo
+#     environment:
+#       DB_URI: "mongodb://Melissa:mypasswd@mongo"
 
-   mongo:
-    image: "mongo:latest"
-    container_name: MelissaMongo
-    volumes:
-    - "mongo_Melissa:/data/db"
-    environment:
-    MONGO_INITDB_ROOT_USERNAME: Melissa
-    MONGO_INITDB_ROOT_PASSWORD: mypasswd
+#   mongo:
+#     image: "mongo:latest"
+#     container_name: Melissa
+#     volumes:
+#       - "mongo_Melissa:/data/db"
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: Melissa
+#       MONGO_INITDB_ROOT_PASSWORD: mypasswd
 
-  volumes:
-  mongo_Melissa:
+# volumes:
+#   mongo_Melissa:
